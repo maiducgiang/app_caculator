@@ -106,6 +106,7 @@ dev_dependencies:
   hive_generator: 2.0.0
   auto_route_generator: ^5.0.2
   freezed: ^2.3.2
+  flutter_gen_runner: 5.2.0
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -117,6 +118,9 @@ flutter_icons:
   image_path_android: "assets/images/logo/icon_app.png"
   ios: true
   image_path: "assets/images/logo/icon_app.jpg"
+
+flutter_gen:
+  output: lib/icons/
   
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
