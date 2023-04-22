@@ -1,12 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mubaha/ui/router/app_router.dart';
+import 'package:mubaha/ui/screen/calculator/calculator_screen.dart';
 
 import 'package:mubaha/ui/screen/main/main_screen.dart';
 
 import 'package:mubaha/ui/screen/sign_up/sign_up_screen.dart';
 import 'package:mubaha/ui/screen/splash/splash_screen.dart';
 import 'package:auto_route/annotations.dart';
+
+import '../screen/choose_theme/choose_theme_screen.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -18,6 +21,8 @@ import 'package:auto_route/annotations.dart';
         initial: true),
     AutoRoute(page: MainScreen, name: "MainPage", path: AppRoutes.main),
     AutoRoute(page: SignUpScreen, name: "SignUp", path: AppRoutes.signup),
+    AutoRoute(page: CalculatorScreen, name: "Calculator", path: AppRoutes.calculator),
+    AutoRoute(page: ChooseThemeScreen, name: "ChooseTheme", path: AppRoutes.chooseTheme),
   ],
 )
 class $AppRouter {}
