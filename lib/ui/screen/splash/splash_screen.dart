@@ -2,6 +2,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mubaha/data/cache_manager.dart';
+import 'package:mubaha/data/firebase/firebase_manager.dart';
 import 'package:mubaha/data/model/user_local/user_model_local.dart';
 import 'package:mubaha/ui/router/router.gr.dart';
 import 'package:mubaha/ui/theme/app_path.dart';
@@ -19,7 +20,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   final _remoteConfig = FirebaseRemoteConfig.instance;
-
+  final FirebaseManager _firebaseManager = FirebaseManager();
   final _cacheManager = CacheManager.instance;
   Future<void> init() async {
     await _remoteConfig.setConfigSettings(RemoteConfigSettings(
@@ -36,8 +37,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   initState() {
     //init();
+    _firebaseManager
+        .verifyEmail("giang1@gmail.com")
+        .then((value) => context.router.push(MainPage()));
     super.initState();
-    context.router.push(MainPage());
+    //context.router.push(MainPage());
   }
 
   void checkFirtLoad({required bool showSignUp}) async {

@@ -87,6 +87,7 @@ dependencies:
   firebase_core:
   firebase_remote_config: ^4.0.0
   firebase_analytics: ^10.2.0
+  firebase_auth: ^4.4.2
   gsheets: ^0.4.2
   lottie: ^2.3.2
   flutter_dotenv: ^5.0.2
@@ -130,13 +131,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/images/mubaha_logo/
-    - assets/images/logo/
-    - assets/images/banner/
-    - assets/images/error/
-    - assets/images/category/
     - assets/images/icons/
-    - assets/images/bottom/
     - assets/images/splash/
     - assets/translations/
     - assets/data/categories.json
@@ -146,7 +141,6 @@ flutter:
     - assets/data/categories.json
     - assets/data/favorite.json
     - assets/data/cartpage.json
-    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

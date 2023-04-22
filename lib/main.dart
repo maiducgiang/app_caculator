@@ -18,7 +18,7 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   final langugage = await AccountServices().getAccountLanguage();
   CacheManager.instance.init();
-  await dotenv.load(fileName: ".env");
+  //await dotenv.load(fileName: ".env");
   await SpUtil.getInstance();
   runApp(EasyLocalization(
       path: "assets/translations",

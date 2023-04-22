@@ -1,4 +1,4 @@
-package com.example.lovecounter
+package com.caculator.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 

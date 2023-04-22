@@ -8,7 +8,7 @@ class CacheManager {
   static CacheManager? _instance;
   static const String _cacheBoxName = 'HiveCache';
   static const int broadmodel = 1;
-  static const int topic = 1;
+  static const int topic = 4;
   static const int userLocal = 2;
   static const int fileItemHiveType = 3;
   static CacheManager get instance => _instance ??= CacheManager._();
