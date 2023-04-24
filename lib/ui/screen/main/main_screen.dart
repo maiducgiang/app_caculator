@@ -1,6 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mubaha/data/cache_manager.dart';
 import 'package:mubaha/icons/assets.gen.dart';
+import 'package:mubaha/ui/router/router.gr.dart';
 import 'package:mubaha/ui/screen/calculator/calculator_screen.dart';
 import 'package:mubaha/ui/screen/change_money_screen/change_money_screen.dart';
 import 'package:mubaha/ui/screen/choose_theme/choose_theme_screen.dart';
@@ -14,7 +17,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-
+  final CacheManager _cacheManager = CacheManager.instance;
   final List<Widget> _widgetOptions = <Widget>[
     const CalculatorScreen(),
     const ChangeMoneyScreen(),
@@ -35,10 +38,11 @@ class _MainScreenState extends State<MainScreen> {
     Assets.images.icLogout.path
   ];
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index) async {
     setState(() {
       _selectedIndex = index;
     });
+
     Navigator.pop(context);
   }
 
@@ -99,9 +103,11 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                     title: Text(_title[index]),
                     selected: _selectedIndex == index,
-                    onTap: () {
+                    onTap: () async {
                       if (index == 3) {
                         ///TODO: implement logout
+                        await _cacheManager.deleteUserToCached();
+                        context.router.push(SplashPage());
                       } else {
                         _onItemTapped(index);
                       }

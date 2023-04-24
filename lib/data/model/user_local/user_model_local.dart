@@ -11,10 +11,14 @@ class UserLocal extends HiveObject {
   String name;
   @HiveField(1)
   String phone;
+  @HiveField(2)
+  String pass;
+  UserLocal({required this.name, required this.phone, required this.pass});
 
-  UserLocal({required this.name, required this.phone});
-
-  UserLocal copyWith({String? name, String? phone}) {
-    return UserLocal(name: name ?? this.name, phone: phone ?? this.phone);
+  UserLocal copyWith({String? name, String? phone, String? pass}) {
+    return UserLocal(
+        name: name ?? this.name,
+        phone: phone ?? this.phone,
+        pass: pass ?? this.pass);
   }
 }
