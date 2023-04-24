@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mubaha/data/firebase/firebase_manager.dart';
 import 'package:mubaha/data/remote/dio_di.dart';
 
 import 'package:mubaha/ui/app_cubit.dart';
@@ -23,6 +24,7 @@ void configureDependencies() {
   //     ));
 
   getIt.registerLazySingleton<AppCubit>(() => AppCubit());
+  getIt.registerLazySingleton<FirebaseManager>(() => FirebaseManager());
   // getIt.registerLazySingleton<ThemeCubit>(() => ThemeCubit());
 }
 

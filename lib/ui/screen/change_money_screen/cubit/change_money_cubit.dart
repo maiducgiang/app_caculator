@@ -18,4 +18,19 @@ class ChangeMoneyCubit extends Cubit<ChangeMoneyState> {
       return false;
     }
   }
+
+  Future<String> changeMoney(
+      {required String from, required String to, required double value}) async {
+    try {
+      final response = await Dio().get(
+          'https://marketdata.tradermade.com/api/v1/live?currency=${from}${to}&api_key=Gj2jrkZZ4QpsZcEj-HSy');
+      List<dynamic> quotes = response.data["quotes"] as List<dynamic>;
+      double bid = (quotes[0] as Map<String, dynamic>)["bid"] as double;
+
+      return (bid * value).toString();
+    } catch (e) {
+      emit(state.copyWith(error: e.toString()));
+      return "0";
+    }
+  }
 }

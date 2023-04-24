@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SignUpState {
   bool get isLoading => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
+  bool get isSignIn => throw _privateConstructorUsedError;
   bool? get addSuccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +32,7 @@ abstract class $SignUpStateCopyWith<$Res> {
           SignUpState value, $Res Function(SignUpState) then) =
       _$SignUpStateCopyWithImpl<$Res, SignUpState>;
   @useResult
-  $Res call({bool isLoading, String? error, bool? addSuccess});
+  $Res call({bool isLoading, String? error, bool isSignIn, bool? addSuccess});
 }
 
 /// @nodoc
@@ -49,6 +50,7 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
   $Res call({
     Object? isLoading = null,
     Object? error = freezed,
+    Object? isSignIn = null,
     Object? addSuccess = freezed,
   }) {
     return _then(_value.copyWith(
@@ -60,6 +62,10 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSignIn: null == isSignIn
+          ? _value.isSignIn
+          : isSignIn // ignore: cast_nullable_to_non_nullable
+              as bool,
       addSuccess: freezed == addSuccess
           ? _value.addSuccess
           : addSuccess // ignore: cast_nullable_to_non_nullable
@@ -76,7 +82,7 @@ abstract class _$$_SignUpStateCopyWith<$Res>
       __$$_SignUpStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, String? error, bool? addSuccess});
+  $Res call({bool isLoading, String? error, bool isSignIn, bool? addSuccess});
 }
 
 /// @nodoc
@@ -92,6 +98,7 @@ class __$$_SignUpStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? error = freezed,
+    Object? isSignIn = null,
     Object? addSuccess = freezed,
   }) {
     return _then(_$_SignUpState(
@@ -103,6 +110,10 @@ class __$$_SignUpStateCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSignIn: null == isSignIn
+          ? _value.isSignIn
+          : isSignIn // ignore: cast_nullable_to_non_nullable
+              as bool,
       addSuccess: freezed == addSuccess
           ? _value.addSuccess
           : addSuccess // ignore: cast_nullable_to_non_nullable
@@ -114,18 +125,24 @@ class __$$_SignUpStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SignUpState implements _SignUpState {
-  const _$_SignUpState({required this.isLoading, this.error, this.addSuccess});
+  const _$_SignUpState(
+      {required this.isLoading,
+      this.error,
+      required this.isSignIn,
+      this.addSuccess});
 
   @override
   final bool isLoading;
   @override
   final String? error;
   @override
+  final bool isSignIn;
+  @override
   final bool? addSuccess;
 
   @override
   String toString() {
-    return 'SignUpState(isLoading: $isLoading, error: $error, addSuccess: $addSuccess)';
+    return 'SignUpState(isLoading: $isLoading, error: $error, isSignIn: $isSignIn, addSuccess: $addSuccess)';
   }
 
   @override
@@ -136,12 +153,15 @@ class _$_SignUpState implements _SignUpState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.error, error) || other.error == error) &&
+            (identical(other.isSignIn, isSignIn) ||
+                other.isSignIn == isSignIn) &&
             (identical(other.addSuccess, addSuccess) ||
                 other.addSuccess == addSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, error, addSuccess);
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, error, isSignIn, addSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -154,12 +174,15 @@ abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
       {required final bool isLoading,
       final String? error,
+      required final bool isSignIn,
       final bool? addSuccess}) = _$_SignUpState;
 
   @override
   bool get isLoading;
   @override
   String? get error;
+  @override
+  bool get isSignIn;
   @override
   bool? get addSuccess;
   @override

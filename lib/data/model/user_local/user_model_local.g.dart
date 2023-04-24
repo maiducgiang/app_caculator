@@ -19,17 +19,20 @@ class UserLocalAdapter extends TypeAdapter<UserLocal> {
     return UserLocal(
       name: fields[0] as String,
       phone: fields[1] as String,
+      pass: fields[2] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, UserLocal obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
-      ..write(obj.phone);
+      ..write(obj.phone)
+      ..writeByte(2)
+      ..write(obj.pass);
   }
 
   @override

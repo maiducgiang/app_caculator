@@ -12,6 +12,7 @@ class DropdowCom extends StatefulWidget {
 
 class _DropdowComState extends State<DropdowCom> {
   late String dropdownValue;
+
   @override
   void initState() {
     if (widget.initPort != null) {
@@ -26,14 +27,7 @@ class _DropdowComState extends State<DropdowCom> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //width: 200,
-      // height: 45,
       padding: EdgeInsets.symmetric(horizontal: 12.w),
-      // decoration: BoxDecoration(
-      //     color: Colors.white,
-      //     border: Border.all(color: Colors.black, width: 1),
-      //     borderRadius: BorderRadius.circular(20.w)
-      //     ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: dropdownValue,
