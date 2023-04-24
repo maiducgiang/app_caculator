@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mubaha/data/cache_manager.dart';
@@ -17,6 +18,8 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
+  late bool showPopup = false;
+  final _remoteConfig = FirebaseRemoteConfig.instance;
   final CacheManager _cacheManager = CacheManager.instance;
   final List<Widget> _widgetOptions = <Widget>[
     const CalculatorScreen(),
@@ -49,6 +52,126 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
+    init();
+  }
+
+  void init() async {
+    await _remoteConfig.setConfigSettings(RemoteConfigSettings(
+      fetchTimeout: const Duration(seconds: 60),
+      minimumFetchInterval: const Duration(seconds: 1),
+    ));
+    await _remoteConfig.ensureInitialized();
+    await _remoteConfig.activate();
+    await _remoteConfig.fetchAndActivate().then((value) {
+      showPopup = _remoteConfig.getBool('show_sign_up');
+    });
+    if (showPopup == true) {
+      _showMaterialDialog();
+    }
+  }
+
+  void _showMaterialDialog() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Container(
+              // padding: EdgeInsets.symmetric(),
+              alignment: Alignment.centerRight,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(
+                  Icons.close,
+                  size: 32,
+                ),
+              ),
+            ),
+            //content: Text('Hey! I am Coflutter!'),
+            actions: <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12),
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        margin:
+                            EdgeInsets.only(top: 10.h, left: 12.h, right: 12.h),
+                        padding: EdgeInsets.symmetric(vertical: 15.h),
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFFF8686),
+                            borderRadius: BorderRadius.circular(16)),
+                        child: const Center(
+                          child: Text(
+                            "Đăng nhập",
+                            style: TextStyle(color: Colors.white, fontSize: 17),
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        margin:
+                            EdgeInsets.only(top: 16.h, left: 12.h, right: 12.h),
+                        padding: EdgeInsets.symmetric(vertical: 15.h),
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFFF8686),
+                            borderRadius: BorderRadius.circular(16)),
+                        child: const Center(
+                          child: Text(
+                            'Đăng ký',
+                            style: TextStyle(color: Colors.white, fontSize: 17),
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        margin:
+                            EdgeInsets.only(top: 16.h, left: 12.h, right: 12.h),
+                        padding: EdgeInsets.symmetric(vertical: 15.h),
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFFF8686),
+                            borderRadius: BorderRadius.circular(16)),
+                        child: const Center(
+                          child: Text(
+                            'Trợ giúp',
+                            style: TextStyle(color: Colors.white, fontSize: 17),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 24.h,
+              )
+              // TextButton(
+              //     onPressed: () {
+              //       Navigator.pop(context);
+              //     },
+              //     child: Text('Close')),
+              // TextButton(
+              //   onPressed: () {
+              //     print('HelloWorld!');
+              //     Navigator.pop(context);
+              //   },
+              //   child: Text('HelloWorld!'),
+              // )
+            ],
+          );
+        });
   }
 
   @override
