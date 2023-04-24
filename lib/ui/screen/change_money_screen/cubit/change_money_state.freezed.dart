@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChangeMoneyState {
   bool? get isLoading => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
+  MoneyModel? get listMoney => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChangeMoneyStateCopyWith<ChangeMoneyState> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $ChangeMoneyStateCopyWith<$Res> {
           ChangeMoneyState value, $Res Function(ChangeMoneyState) then) =
       _$ChangeMoneyStateCopyWithImpl<$Res, ChangeMoneyState>;
   @useResult
-  $Res call({bool? isLoading, String error});
+  $Res call({bool? isLoading, String error, MoneyModel? listMoney});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$ChangeMoneyStateCopyWithImpl<$Res, $Val extends ChangeMoneyState>
   $Res call({
     Object? isLoading = freezed,
     Object? error = null,
+    Object? listMoney = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: freezed == isLoading
@@ -58,6 +60,10 @@ class _$ChangeMoneyStateCopyWithImpl<$Res, $Val extends ChangeMoneyState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
+      listMoney: freezed == listMoney
+          ? _value.listMoney
+          : listMoney // ignore: cast_nullable_to_non_nullable
+              as MoneyModel?,
     ) as $Val);
   }
 }
@@ -70,7 +76,7 @@ abstract class _$$_ChangeMoneyStateCopyWith<$Res>
       __$$_ChangeMoneyStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool? isLoading, String error});
+  $Res call({bool? isLoading, String error, MoneyModel? listMoney});
 }
 
 /// @nodoc
@@ -86,6 +92,7 @@ class __$$_ChangeMoneyStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? error = null,
+    Object? listMoney = freezed,
   }) {
     return _then(_$_ChangeMoneyState(
       isLoading: freezed == isLoading
@@ -96,6 +103,10 @@ class __$$_ChangeMoneyStateCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
+      listMoney: freezed == listMoney
+          ? _value.listMoney
+          : listMoney // ignore: cast_nullable_to_non_nullable
+              as MoneyModel?,
     ));
   }
 }
@@ -103,16 +114,19 @@ class __$$_ChangeMoneyStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChangeMoneyState implements _ChangeMoneyState {
-  const _$_ChangeMoneyState({this.isLoading, required this.error});
+  const _$_ChangeMoneyState(
+      {this.isLoading, required this.error, this.listMoney});
 
   @override
   final bool? isLoading;
   @override
   final String error;
+  @override
+  final MoneyModel? listMoney;
 
   @override
   String toString() {
-    return 'ChangeMoneyState(isLoading: $isLoading, error: $error)';
+    return 'ChangeMoneyState(isLoading: $isLoading, error: $error, listMoney: $listMoney)';
   }
 
   @override
@@ -122,11 +136,13 @@ class _$_ChangeMoneyState implements _ChangeMoneyState {
             other is _$_ChangeMoneyState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.listMoney, listMoney) ||
+                other.listMoney == listMoney));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, error);
+  int get hashCode => Object.hash(runtimeType, isLoading, error, listMoney);
 
   @JsonKey(ignore: true)
   @override
@@ -138,12 +154,15 @@ class _$_ChangeMoneyState implements _ChangeMoneyState {
 abstract class _ChangeMoneyState implements ChangeMoneyState {
   const factory _ChangeMoneyState(
       {final bool? isLoading,
-      required final String error}) = _$_ChangeMoneyState;
+      required final String error,
+      final MoneyModel? listMoney}) = _$_ChangeMoneyState;
 
   @override
   bool? get isLoading;
   @override
   String get error;
+  @override
+  MoneyModel? get listMoney;
   @override
   @JsonKey(ignore: true)
   _$$_ChangeMoneyStateCopyWith<_$_ChangeMoneyState> get copyWith =>

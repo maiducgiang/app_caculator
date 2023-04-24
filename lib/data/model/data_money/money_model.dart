@@ -4,6 +4,7 @@ part 'money_model.g.dart';
 
 @JsonSerializable()
 class MoneyModel {
+  @JsonKey(name: "available_currencies")
   final Map<String, String> availableCurrencies;
   MoneyModel({required this.availableCurrencies});
 

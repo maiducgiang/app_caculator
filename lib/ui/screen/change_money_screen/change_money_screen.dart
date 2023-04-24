@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mubaha/ui/screen/change_money_screen/cubit/change_money_cubit.dart';
 import 'package:mubaha/ui/screen/change_money_screen/cubit/change_money_state.dart';
 import 'package:mubaha/ui/screen/change_money_screen/widget/dropdown.dart';
+import 'package:mubaha/ui/shared/loading_screen.dart';
 import 'package:mubaha/ui/shared/utils/functions.dart';
 import 'package:mubaha/ui/theme/theme.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
@@ -20,10 +21,10 @@ class ChangeMoneyScreen extends StatefulWidget {
 class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
   final TextEditingController moneyFirstController =
       TextEditingController(text: "0");
-  late String dropdownValueFirst = "";
+  late String? dropdownValueFirst = null;
   final TextEditingController moneySecondController =
       TextEditingController(text: "0");
-  late String dropdownValueSecond = "";
+  late String? dropdownValueSecond = null;
   final Map<String, String> dataDefine = {
     "giang1": "giangvalue",
     "giang2": "giangvalue",
@@ -41,6 +42,18 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
           // TODO: implement listener
         },
         builder: (context, state) {
+          if (state.listMoney == null) {
+            return LoadingScreen();
+          }
+          if (dropdownValueFirst == null &&
+              dropdownValueSecond == null &&
+              state.listMoney != null) {
+            state.listMoney!.availableCurrencies.forEach((key, value) {
+              dropdownValueFirst = value;
+              dropdownValueSecond = value;
+              //return;
+            });
+          }
           return GestureDetector(
             onTap: () {
               unfocus(context);
@@ -54,14 +67,14 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                     SizedBox(
                       height: 50.h,
                     ),
-                    customeText(moneyFirstController, dropdownValueFirst,
+                    customeText(moneyFirstController, dropdownValueFirst!,
                         (value) {
                       setState(
                         () {
                           dropdownValueFirst = value;
                         },
                       );
-                    }, dataDefine),
+                    }, state.listMoney!.availableCurrencies),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 12.h),
                       child: Row(
@@ -78,14 +91,14 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                         ],
                       ),
                     ),
-                    customeText(moneySecondController, dropdownValueSecond,
+                    customeText(moneySecondController, dropdownValueSecond!,
                         (value) {
                       setState(
                         () {
                           dropdownValueSecond = value;
                         },
                       );
-                    }, dataDefine),
+                    }, state.listMoney!.availableCurrencies),
                     Expanded(
                       child: Container(),
                     ),
@@ -339,7 +352,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
     List<String> items = [];
     data.forEach(
       (key, value) {
-        items.add(key);
+        items.add(value);
       },
     );
     final controller = MoneyMaskedTextController(

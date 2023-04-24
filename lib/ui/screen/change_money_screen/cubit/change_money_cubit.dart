@@ -11,7 +11,7 @@ class ChangeMoneyCubit extends Cubit<ChangeMoneyState> {
       final response = await Dio().get(
           'https://marketdata.tradermade.com/api/v1/live_currencies_list?api_key=Gj2jrkZZ4QpsZcEj-HSy');
       MoneyModel model = MoneyModel.fromJson(response.data);
-      model;
+      emit(state.copyWith(listMoney: model));
       return true;
     } catch (e) {
       emit(state.copyWith(error: e.toString()));

@@ -42,7 +42,10 @@ class _DropdowComState extends State<DropdowCom> {
             size: 35,
           ),
           elevation: 0,
-          style: TextStyle(color: Colors.black, fontSize: 15.sp),
+          style: TextStyle(
+              color: Colors.black,
+              fontSize: 15.sp,
+              overflow: TextOverflow.ellipsis),
           onChanged: (String? value) {
             widget.callback(value!);
             setState(() {
