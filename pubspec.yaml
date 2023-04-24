@@ -97,6 +97,9 @@ dependencies:
   image_gallery_saver: ^1.7.1
   image_cropper: ^3.0.2
   sp_util: ^2.0.3
+  math_expressions: ^2.4.0
+
+
 dev_dependencies:
   flutter_launcher_icons: ^0.13.0
   flutter_test:
