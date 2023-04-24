@@ -10,7 +10,7 @@ class FirebaseManager {
     try {
       UserCredential user = await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-
+      // _firebaseAuth.userChanges();
       return true;
     } catch (e) {
       BotToast.showText(text: e.toString());
