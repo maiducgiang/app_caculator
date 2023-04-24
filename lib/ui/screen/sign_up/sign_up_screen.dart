@@ -47,11 +47,13 @@ class _SignUpPageState extends State<SignUpPage> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.5), BlendMode.darken),
-                image: const AssetImage(AppPath.background2))),
+          color: Color(0xff22252D),
+          // image: DecorationImage(
+          //     fit: BoxFit.cover,
+          //     colorFilter: ColorFilter.mode(
+          //         Colors.black.withOpacity(0.5), BlendMode.darken),
+          //     image: const AssetImage(AppPath.background2))
+        ),
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(
