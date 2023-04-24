@@ -31,6 +31,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _gmailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
   late final SignUpCubit _signUpCubit;
@@ -100,7 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   SizedBox(height: 4.h),
                   TextField(
                     textAlign: TextAlign.start,
-                    controller: _nameController,
+                    controller: _gmailController,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       hintText: 'Nhập gmail ...',
@@ -181,7 +182,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   GestureDetector(
                     onTap: () async {
                       if (state.isSignIn) {
-                        final String gmail = _nameController.text.trim();
+                        final String gmail = _gmailController.text.trim();
                         final String pass = _passController.text.trim();
                         if (gmail.length >= 6 &&
                             pass.isNotEmpty &&
@@ -207,7 +208,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           BotToast.showText(text: 'Vui lòng nhập mật khẩu');
                         }
                       } else {
-                        final String gmail = _nameController.text.trim();
+                        final String gmail = _gmailController.text.trim();
                         final String pass = _passController.text.trim();
                         final String phone = _phoneNumberController.text.trim();
                         if (gmail.length >= 6 &&
