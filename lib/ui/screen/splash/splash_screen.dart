@@ -36,10 +36,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   initState() {
-    //init();
-    _firebaseManager
-        .verifyEmail("giang1@gmail.com")
-        .then((value) => context.router.push(MainPage()));
+    init();
+    // _firebaseManager
+    //     .verifyEmail("giang1@gmail.com")
+    //     .then((value) => context.router.push(MainPage()));
     super.initState();
     //context.router.push(MainPage());
   }
