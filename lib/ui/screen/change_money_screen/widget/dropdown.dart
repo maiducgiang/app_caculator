@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mubaha/ui/theme/constant.dart';
 
 class DropdowCom extends StatefulWidget {
   DropdowCom({required this.comPorts, required this.callback, this.initPort});
@@ -31,9 +32,11 @@ class _DropdowComState extends State<DropdowCom> {
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: dropdownValue,
+          dropdownColor: Colors.white,
           icon: const Icon(
             Icons.arrow_drop_down,
             size: 35,
+            color: Colors.black,
           ),
           elevation: 0,
           style: TextStyle(
@@ -49,7 +52,10 @@ class _DropdowComState extends State<DropdowCom> {
           items: widget.comPorts.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
-              child: Text(value),
+              child: Text(
+                value,
+                //style: TextStyle(color: textColor),
+              ),
             );
           }).toList(),
         ),
