@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppState {
   TopicLocal? get topicLocal => throw _privateConstructorUsedError;
+  ThemeData? get themeData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -28,7 +29,7 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call({TopicLocal? topicLocal});
+  $Res call({TopicLocal? topicLocal, ThemeData? themeData});
 }
 
 /// @nodoc
@@ -45,12 +46,17 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   @override
   $Res call({
     Object? topicLocal = freezed,
+    Object? themeData = freezed,
   }) {
     return _then(_value.copyWith(
       topicLocal: freezed == topicLocal
           ? _value.topicLocal
           : topicLocal // ignore: cast_nullable_to_non_nullable
               as TopicLocal?,
+      themeData: freezed == themeData
+          ? _value.themeData
+          : themeData // ignore: cast_nullable_to_non_nullable
+              as ThemeData?,
     ) as $Val);
   }
 }
@@ -62,7 +68,7 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       __$$_AppStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TopicLocal? topicLocal});
+  $Res call({TopicLocal? topicLocal, ThemeData? themeData});
 }
 
 /// @nodoc
@@ -77,12 +83,17 @@ class __$$_AppStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? topicLocal = freezed,
+    Object? themeData = freezed,
   }) {
     return _then(_$_AppState(
       topicLocal: freezed == topicLocal
           ? _value.topicLocal
           : topicLocal // ignore: cast_nullable_to_non_nullable
               as TopicLocal?,
+      themeData: freezed == themeData
+          ? _value.themeData
+          : themeData // ignore: cast_nullable_to_non_nullable
+              as ThemeData?,
     ));
   }
 }
@@ -90,14 +101,16 @@ class __$$_AppStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AppState with DiagnosticableTreeMixin implements _AppState {
-  const _$_AppState({this.topicLocal});
+  const _$_AppState({this.topicLocal, this.themeData});
 
   @override
   final TopicLocal? topicLocal;
+  @override
+  final ThemeData? themeData;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppState(topicLocal: $topicLocal)';
+    return 'AppState(topicLocal: $topicLocal, themeData: $themeData)';
   }
 
   @override
@@ -105,7 +118,8 @@ class _$_AppState with DiagnosticableTreeMixin implements _AppState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AppState'))
-      ..add(DiagnosticsProperty('topicLocal', topicLocal));
+      ..add(DiagnosticsProperty('topicLocal', topicLocal))
+      ..add(DiagnosticsProperty('themeData', themeData));
   }
 
   @override
@@ -114,11 +128,13 @@ class _$_AppState with DiagnosticableTreeMixin implements _AppState {
         (other.runtimeType == runtimeType &&
             other is _$_AppState &&
             (identical(other.topicLocal, topicLocal) ||
-                other.topicLocal == topicLocal));
+                other.topicLocal == topicLocal) &&
+            (identical(other.themeData, themeData) ||
+                other.themeData == themeData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, topicLocal);
+  int get hashCode => Object.hash(runtimeType, topicLocal, themeData);
 
   @JsonKey(ignore: true)
   @override
@@ -128,10 +144,13 @@ class _$_AppState with DiagnosticableTreeMixin implements _AppState {
 }
 
 abstract class _AppState implements AppState {
-  const factory _AppState({final TopicLocal? topicLocal}) = _$_AppState;
+  const factory _AppState(
+      {final TopicLocal? topicLocal, final ThemeData? themeData}) = _$_AppState;
 
   @override
   TopicLocal? get topicLocal;
+  @override
+  ThemeData? get themeData;
   @override
   @JsonKey(ignore: true)
   _$$_AppStateCopyWith<_$_AppState> get copyWith =>

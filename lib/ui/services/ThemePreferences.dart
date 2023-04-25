@@ -21,10 +21,17 @@ class ThemePreferences {
 
   _saveThemBox(bool isDarkMode) => preferences!.setBool(_key, isDarkMode);
   _changeStatus(bool status) => isDarkMode == status;
-  void switchTheme() {
-    AppThemes
-        .appThemeData[_loadThemeFromBox() ? ThemeMode.light : ThemeMode.dark];
-    _saveThemBox(!_loadThemeFromBox());
-    _changeStatus(!isDarkMode);
+  void switchTheme(String theme) {
+    // AppThemes
+    //     .appThemeData[_loadThemeFromBox() ? ThemeMode.light : ThemeMode.dark];
+
+    if (theme == "Light") {
+      _changeStatus(false);
+      _saveThemBox(false);
+    } else {
+      _changeStatus(true);
+      _saveThemBox(true);
+    }
+    print("theme is dark mode +" + this.isDarkMode.toString());
   }
 }

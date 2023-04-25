@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mubaha/data/model/board_local/board_model.dart';
+import 'package:mubaha/data/model/topic_local/current_topic.dart';
 import 'package:mubaha/data/model/topic_local/topic_local.dart';
 import 'package:mubaha/data/model/user_local/user_model_local.dart';
 
@@ -9,12 +10,14 @@ class CacheManager {
   static const String _cacheBoxName = 'HiveCache';
   static const int broadmodel = 1;
   static const int topic = 4;
+  static const int currentTopic = 5;
   static const int userLocal = 2;
   static const int fileItemHiveType = 3;
   static CacheManager get instance => _instance ??= CacheManager._();
   static const String _listBoard = 'listBoardLocal';
   static const String _userLocal = 'userLocal';
   static const String _TopicLocalAdapter = "TopicLocalAdapter";
+  static const String _currentTopic = "currentTopic";
   CacheManager._();
 
   Box get _cacheBox => Hive.box(_cacheBoxName);
@@ -27,7 +30,7 @@ class CacheManager {
       await Hive.initFlutter();
       Hive.registerAdapter(BoardModelLocalAdapter());
       Hive.registerAdapter(UserLocalAdapter());
-
+      Hive.registerAdapter(CurrentTopicAdapter());
       Hive.registerAdapter(TopicLocalAdapter());
       await openBox();
       print('Open box successfully');
@@ -104,6 +107,19 @@ class CacheManager {
     return user;
   }
 
+  Future<void> addCurrnetTopicToCached(CurrentTopic currentTopic) async {
+    await _cacheBox.put(_currentTopic, currentTopic);
+  }
+
+  Future<void> deleteCurrnetTopicToCached() async {
+    await _cacheBox.put(_currentTopic, null);
+  }
+
+  Future<CurrentTopic?> getCurrnetTopicCached() async {
+    CurrentTopic? topic = _cacheBox.get(_currentTopic) as CurrentTopic?;
+    return topic;
+  }
+
   Future<void> addTopic(TopicLocal topicLocal) async {
     await _cacheBox.put(_TopicLocalAdapter, topicLocal);
   }
@@ -115,7 +131,8 @@ class CacheManager {
 
   Future<void> clear() async {
     try {
-      await _cacheBox.deleteAll([_listBoard, _userLocal]);
+      await _cacheBox.deleteAll(
+          [_listBoard, _userLocal, _currentTopic, _TopicLocalAdapter]);
     } catch (e) {
       print(e);
     }

@@ -9,6 +9,7 @@ import 'package:mubaha/ui/screen/change_money_screen/cubit/change_money_state.da
 import 'package:mubaha/ui/screen/change_money_screen/widget/dropdown.dart';
 import 'package:mubaha/ui/shared/loading_screen.dart';
 import 'package:mubaha/ui/shared/utils/functions.dart';
+import 'package:mubaha/ui/theme/constant.dart';
 import 'package:mubaha/ui/theme/theme.dart';
 
 class ChangeMoneyScreen extends StatefulWidget {
@@ -103,7 +104,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
               unfocus(context);
             },
             child: Scaffold(
-              backgroundColor: Color(0xff22252D),
+              backgroundColor: backgroundColor,
               body: Container(
                 padding: EdgeInsets.all(12.w),
                 child: Column(
@@ -118,7 +119,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                           dropdownValueFirst = value;
                         },
                       );
-                    }, state.listMoney!.availableCurrencies),
+                    }, state.listMoney!.availableCurrencies, Color(0xffD9D9D9)),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 12.h),
                       child: Row(
@@ -131,6 +132,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                           SvgPicture.asset(
                             "assets/images/icons/vector1.svg",
                             width: 12.w,
+                            color: textColor,
                           ),
                         ],
                       ),
@@ -142,7 +144,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                           dropdownValueSecond = value;
                         },
                       );
-                    }, state.listMoney!.availableCurrencies),
+                    }, state.listMoney!.availableCurrencies, Color(0xffD9D9D9)),
                     Expanded(
                       child: Container(),
                     ),
@@ -153,6 +155,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                           children: [
                             button(
                                 context: context,
+                                col: buttonColor,
                                 onTap: () {
                                   addText("1");
                                 },
@@ -160,7 +163,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                                   "1",
                                   style: TextStyle(
                                       fontSize: 28.sp,
-                                      color: Colors.white,
+                                      color: textColor,
                                       fontWeight: FontWeight.w400),
                                 )),
                             SizedBox(
@@ -168,6 +171,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                             ),
                             button(
                                 context: context,
+                                col: buttonColor,
                                 onTap: () {
                                   addText("2");
                                 },
@@ -175,7 +179,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                                   "2",
                                   style: TextStyle(
                                       fontSize: 28.sp,
-                                      color: Colors.white,
+                                      color: textColor,
                                       fontWeight: FontWeight.w400),
                                 )),
                             SizedBox(
@@ -183,6 +187,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                             ),
                             button(
                                 context: context,
+                                col: buttonColor,
                                 onTap: () {
                                   addText("3");
                                 },
@@ -190,7 +195,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                                   "3",
                                   style: TextStyle(
                                       fontSize: 28.sp,
-                                      color: Colors.white,
+                                      color: textColor,
                                       fontWeight: FontWeight.w400),
                                 )),
                             SizedBox(
@@ -200,10 +205,12 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                               onTap: () {
                                 deleteText.call();
                               },
+                              col: buttonColor,
                               context: context,
                               icon: SvgPicture.asset(
                                 "assets/images/icons/delete_cacu.svg",
                                 width: 26.w,
+                                color: textColor,
                               ),
                             ),
                           ],
@@ -219,11 +226,12 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                                 onTap: () {
                                   addText("4");
                                 },
+                                col: buttonColor,
                                 icon: Text(
                                   "4",
                                   style: TextStyle(
                                       fontSize: 28.sp,
-                                      color: Colors.white,
+                                      color: textColor,
                                       fontWeight: FontWeight.w400),
                                 )),
                             SizedBox(
@@ -234,11 +242,12 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                                 onTap: () {
                                   addText("5");
                                 },
+                                col: buttonColor,
                                 icon: Text(
                                   "5",
                                   style: TextStyle(
                                       fontSize: 28.sp,
-                                      color: Colors.white,
+                                      color: textColor,
                                       fontWeight: FontWeight.w400),
                                 )),
                             SizedBox(
@@ -249,11 +258,12 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                                 onTap: () {
                                   addText("6");
                                 },
+                                col: buttonColor,
                                 icon: Text(
                                   "6",
                                   style: TextStyle(
                                       fontSize: 28.sp,
-                                      color: Colors.white,
+                                      color: textColor,
                                       fontWeight: FontWeight.w400),
                                 )),
                             SizedBox(
@@ -293,11 +303,12 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                                 onTap: () {
                                   addText("7");
                                 },
+                                col: buttonColor,
                                 icon: Text(
                                   "7",
                                   style: TextStyle(
                                       fontSize: 28.sp,
-                                      color: Colors.white,
+                                      color: textColor,
                                       fontWeight: FontWeight.w400),
                                 )),
                             SizedBox(
@@ -308,11 +319,12 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                                 onTap: () {
                                   addText("8");
                                 },
+                                col: buttonColor,
                                 icon: Text(
                                   "8",
                                   style: TextStyle(
                                       fontSize: 28.sp,
-                                      color: Colors.white,
+                                      color: textColor,
                                       fontWeight: FontWeight.w400),
                                 )),
                             SizedBox(
@@ -323,11 +335,12 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                                 onTap: () {
                                   addText("9");
                                 },
+                                col: buttonColor,
                                 icon: Text(
                                   "9",
                                   style: TextStyle(
                                       fontSize: 28.sp,
-                                      color: Colors.white,
+                                      color: textColor,
                                       fontWeight: FontWeight.w400),
                                 )),
                             SizedBox(
@@ -355,11 +368,12 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                                 onTap: () {
                                   addText("0");
                                 },
+                                col: buttonColor,
                                 icon: Text(
                                   "0",
                                   style: TextStyle(
                                       fontSize: 28.sp,
-                                      color: Colors.white,
+                                      color: textColor,
                                       fontWeight: FontWeight.w400),
                                 )),
                             SizedBox(
@@ -369,12 +383,13 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
                               onTap: () {
                                 addText(".");
                               },
+                              col: buttonColor,
                               context: context,
                               icon: Text(
                                 ",",
                                 style: TextStyle(
                                     fontSize: 28.sp,
-                                    color: Colors.white,
+                                    color: textColor,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -447,7 +462,7 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
   }
 
   Widget customeText(TextEditingController textController, String dropdownValue,
-      Function(String) onChange, Map<String, String> data) {
+      Function(String) onChange, Map<String, String> data, Color? color) {
     // List of items in our dropdown menu
     List<String> items = [];
     data.forEach(
@@ -459,7 +474,9 @@ class _ChangeMoneyScreenState extends State<ChangeMoneyScreen> {
     return Container(
       height: 52,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50), color: Colors.white),
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: color ?? Colors.black, width: 1),
+          color: Colors.white),
       child: Row(children: [
         Expanded(
             flex: 2,
