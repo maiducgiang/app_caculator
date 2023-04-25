@@ -4,7 +4,6 @@ import 'package:mubaha/ui/services/ThemePreferences.dart';
 import 'package:mubaha/ui/theme/constant.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class AppThemes {
   static final appThemeData = {
     AppTheme.lightTheme: ThemeData(
@@ -33,6 +32,7 @@ class AppThemes {
       primaryColor: primaryColor,
       textTheme: GoogleFonts.beVietnamProTextTheme(),
       brightness: Brightness.dark,
+
       scaffoldBackgroundColor: contentColorLightTheme,
       iconTheme: const IconThemeData(color: contentColorDarkTheme),
       // fontFamily: "Poppins",

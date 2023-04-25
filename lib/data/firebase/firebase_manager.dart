@@ -5,27 +5,44 @@ import 'package:firebase_auth/firebase_auth.dart';
 class FirebaseManager {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  Future<void> createUser(
+  Future<bool> createUser(
       {required String email, required String password}) async {
     try {
       UserCredential user = await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
+      // _firebaseAuth.userChanges();
+      return true;
     } catch (e) {
       BotToast.showText(text: e.toString());
     }
+    return false;
   }
 
-  Future<void> login({required String email, required String password}) async {
+  Future<bool> login({required String email, required String password}) async {
     try {
-      final userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
       final User? user = userCredential.user;
       print(user?.uid);
+      return true;
     } catch (e) {
       BotToast.showText(text: e.toString());
     }
+    return false;
   }
 
+  // Future<bool> updatePass({required String email, required String password}) async {
+  //   try {
+  //     final userCredential = await _firebaseAuth.
+  //         // .(email: email, password: password);
+  //     final User? user = userCredential.user;
+  //     print(user?.uid);
+  //     return true;
+  //   } catch (e) {
+  //     BotToast.showText(text: e.toString());
+  //   }
+  //   return false;
+  // }
   Future<void> verifyEmail(String email) async {
     try {
       var acs = ActionCodeSettings(

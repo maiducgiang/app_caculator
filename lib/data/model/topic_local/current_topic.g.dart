@@ -1,38 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_model_local.dart';
+part of 'current_topic.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserLocalAdapter extends TypeAdapter<UserLocal> {
+class CurrentTopicAdapter extends TypeAdapter<CurrentTopic> {
   @override
-  final int typeId = 2;
+  final int typeId = 5;
 
   @override
-  UserLocal read(BinaryReader reader) {
+  CurrentTopic read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return UserLocal(
-      name: fields[0] as String,
-      phone: fields[1] as String,
-      pass: fields[2] as String,
+    return CurrentTopic(
+      id: fields[0] as String?,
+      currentTopic: fields[1] as TopicLocal?,
+      listTopic: (fields[2] as List?)?.cast<TopicLocal>(),
+      currentTheme: fields[3] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, UserLocal obj) {
+  void write(BinaryWriter writer, CurrentTopic obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.name)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.phone)
+      ..write(obj.currentTopic)
+      ..writeByte(3)
+      ..write(obj.currentTheme)
       ..writeByte(2)
-      ..write(obj.pass);
+      ..write(obj.listTopic);
   }
 
   @override
@@ -41,7 +44,7 @@ class UserLocalAdapter extends TypeAdapter<UserLocal> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserLocalAdapter &&
+      other is CurrentTopicAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

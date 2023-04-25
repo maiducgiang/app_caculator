@@ -11,18 +11,18 @@ class TopicLocal extends HiveObject {
   @HiveField(5)
   String? id;
   @HiveField(0)
-  String title;
+  String textColor;
   @HiveField(1)
-  Color primaryColor;
+  Color buttonColor;
   @HiveField(2)
-  Color backgroundColor;
+  Color buttonTextColor;
   @HiveField(3)
-  Color textColor;
+  Color backgroundColor;
 
   TopicLocal(
       {this.id,
-      required this.title,
-      required this.primaryColor,
       required this.backgroundColor,
-      required this.textColor});
+      required this.textColor,
+      required this.buttonColor,
+      required this.buttonTextColor});
 }

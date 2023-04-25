@@ -18,10 +18,10 @@ class TopicLocalAdapter extends TypeAdapter<TopicLocal> {
     };
     return TopicLocal(
       id: fields[5] as String?,
-      title: fields[0] as String,
-      primaryColor: fields[1] as Color,
-      backgroundColor: fields[2] as Color,
-      textColor: fields[3] as Color,
+      backgroundColor: fields[3] as Color,
+      textColor: fields[0] as String,
+      buttonColor: fields[1] as Color,
+      buttonTextColor: fields[2] as Color,
     );
   }
 
@@ -32,13 +32,13 @@ class TopicLocalAdapter extends TypeAdapter<TopicLocal> {
       ..writeByte(5)
       ..write(obj.id)
       ..writeByte(0)
-      ..write(obj.title)
+      ..write(obj.textColor)
       ..writeByte(1)
-      ..write(obj.primaryColor)
+      ..write(obj.buttonColor)
       ..writeByte(2)
-      ..write(obj.backgroundColor)
+      ..write(obj.buttonTextColor)
       ..writeByte(3)
-      ..write(obj.textColor);
+      ..write(obj.backgroundColor);
   }
 
   @override

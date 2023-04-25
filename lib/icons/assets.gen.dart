@@ -126,6 +126,15 @@ class $AssetsImagesIconsGen {
   String get bottomnavigatorSettingSelected =>
       'assets/images/icons/bottomnavigator_setting_selected.svg';
 
+  /// File path: assets/images/icons/cacu_congtru.svg
+  String get cacuCongtru => 'assets/images/icons/cacu_congtru.svg';
+
+  /// File path: assets/images/icons/cacu_down.svg
+  String get cacuDown => 'assets/images/icons/cacu_down.svg';
+
+  /// File path: assets/images/icons/cacu_up.svg
+  String get cacuUp => 'assets/images/icons/cacu_up.svg';
+
   /// File path: assets/images/icons/calendar.svg
   String get calendar => 'assets/images/icons/calendar.svg';
 
@@ -134,6 +143,9 @@ class $AssetsImagesIconsGen {
 
   /// File path: assets/images/icons/delete.svg
   String get delete => 'assets/images/icons/delete.svg';
+
+  /// File path: assets/images/icons/delete_cacu.svg
+  String get deleteCacu => 'assets/images/icons/delete_cacu.svg';
 
   /// File path: assets/images/icons/dress.svg
   String get dress => 'assets/images/icons/dress.svg';
@@ -168,6 +180,12 @@ class $AssetsImagesIconsGen {
   /// File path: assets/images/icons/search.svg
   String get search => 'assets/images/icons/search.svg';
 
+  /// File path: assets/images/icons/vector.svg
+  String get vector => 'assets/images/icons/vector.svg';
+
+  /// File path: assets/images/icons/vector1.svg
+  String get vector1 => 'assets/images/icons/vector1.svg';
+
   /// List of all assets
   List<String> get values => [
         apple,
@@ -178,9 +196,13 @@ class $AssetsImagesIconsGen {
         bottomnavigatorHeartSelected,
         bottomnavigatorSetting,
         bottomnavigatorSettingSelected,
+        cacuCongtru,
+        cacuDown,
+        cacuUp,
         calendar,
         cart,
         delete,
+        deleteCacu,
         dress,
         edit,
         ellipse,
@@ -191,7 +213,9 @@ class $AssetsImagesIconsGen {
         like,
         notificationIcon,
         sandal,
-        search
+        search,
+        vector,
+        vector1
       ];
 }
 

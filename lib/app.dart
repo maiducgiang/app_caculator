@@ -20,12 +20,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => ThemeCubit(),
+        create: (context) => ThemeCubit()..init(),
         child: BlocBuilder<ThemeCubit, ThemeState>(
             builder: (BuildContext context, ThemeState state) {
           return ScreenUtilInit(
             builder: (context, _) => MaterialApp.router(
-              title: 'Mubaha',
+              title: 'Caculator',
               theme: state.themeData,
               debugShowCheckedModeBanner: false,
               routeInformationParser: _appRouter.defaultRouteParser(),
