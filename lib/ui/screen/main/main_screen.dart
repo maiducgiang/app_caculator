@@ -10,6 +10,7 @@ import 'package:mubaha/ui/screen/change_money_screen/change_money_screen.dart';
 import 'package:mubaha/ui/screen/choose_theme/choose_theme_screen.dart';
 import 'package:mubaha/ui/theme/constant.dart';
 import 'package:mubaha/ui/theme/theme.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -23,6 +24,11 @@ class _MainScreenState extends State<MainScreen> {
   late bool showPopup = false;
   final _remoteConfig = FirebaseRemoteConfig.instance;
   final CacheManager _cacheManager = CacheManager.instance;
+  String loginUrl = '';
+  String signUpUrl = '';
+  String supportUrl = '';
+
+
   final List<Widget> _widgetOptions = <Widget>[
     const CalculatorScreen(),
     const ChangeMoneyScreen(),
@@ -66,6 +72,9 @@ class _MainScreenState extends State<MainScreen> {
     await _remoteConfig.activate();
     await _remoteConfig.fetchAndActivate().then((value) {
       showPopup = _remoteConfig.getBool('show_sign_up');
+      loginUrl = _remoteConfig.getString('login_url');
+      signUpUrl = _remoteConfig.getString('signup_url');
+      supportUrl = _remoteConfig.getString('support_url');
     });
     if (showPopup == true) {
       _showMaterialDialog();
@@ -102,12 +111,17 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Column(
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
+                        onTap: () async {
+                          final url = loginUrl;
+                            if (await canLaunchUrl(Uri.parse(url))) {
+                              await launchUrl(Uri.parse(url));
+                            } else {
+                              throw 'Could not launch $url';
+                            }
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -126,8 +140,13 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
+                        onTap: () async {
+                          final url = signUpUrl;
+                            if (await canLaunchUrl(Uri.parse(url))) {
+                              await launchUrl(Uri.parse(url));
+                            } else {
+                              throw 'Could not launch $url';
+                            }
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -146,8 +165,13 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
+                        onTap: () async {
+                          final url = supportUrl;
+                            if (await canLaunchUrl(Uri.parse(url))) {
+                              await launchUrl(Uri.parse(url));
+                            } else {
+                              throw 'Could not launch $url';
+                            }
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -191,10 +215,14 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: backgroundColor,
         appBar: AppBar(
+          backgroundColor: backgroundColor,
+          iconTheme: IconThemeData(color: textColor),
           title: Text(
             _title[_selectedIndex],
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.w500, color: textColor),
           ),
           centerTitle: false,
           elevation: 0,
@@ -203,8 +231,9 @@ class _MainScreenState extends State<MainScreen> {
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20))),
         ),
-        //backgroundColor: backgroundColor,
+        // backgroundColor: backgroundColor,
         drawer: Drawer(
+          backgroundColor: backgroundColor,
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
@@ -224,7 +253,7 @@ class _MainScreenState extends State<MainScreen> {
                         SizedBox(width: 16.w),
                         const Flexible(
                           child: Text(
-                            'Xin chào, Tom',
+                            'Xin chào',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -257,7 +286,7 @@ class _MainScreenState extends State<MainScreen> {
                       if (index == 3) {
                         ///TODO: implement logout
                         await _cacheManager.deleteUserToCached();
-                        context.router.push(SplashPage());
+                        context.router.push(const SplashPage());
                       } else {
                         _onItemTapped(index);
                       }
