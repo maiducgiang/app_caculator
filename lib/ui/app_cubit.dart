@@ -13,15 +13,4 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void init() {}
-  // Future<void> initTheme() async {
-  //   if (await _cacheManager.getCurrnetTopicCached() == null) {
-  //     _cacheManager.addCurrnetTopicToCached(
-  //         CurrentTopic(currentTheme: ThemeData.light()));
-  //     emit(state.copyWith());
-  //   }
-  // }
-
-  Future<void> setTheme(ThemeData theme) async {
-    emit(state.copyWith(themeData: theme ?? ThemeData.light()));
-  }
 }

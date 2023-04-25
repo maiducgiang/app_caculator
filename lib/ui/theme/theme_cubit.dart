@@ -9,11 +9,6 @@ class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit() : super(ThemeState.initial());
   final CacheManager _cacheManager = CacheManager.instance;
 
-  Future<void> setTheme(AppTheme theme) async {
-    emit(state.copyWith(
-        themeData: AppThemes.appThemeData[theme] ?? ThemeData.light()));
-  }
-
   Future<void> init() async {
     ThemeData themeData = ThemeData.light();
 
