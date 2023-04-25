@@ -1,44 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'topic_local.dart';
+part of 'current_topic.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TopicLocalAdapter extends TypeAdapter<TopicLocal> {
+class CurrentTopicAdapter extends TypeAdapter<CurrentTopic> {
   @override
-  final int typeId = 4;
+  final int typeId = 5;
 
   @override
-  TopicLocal read(BinaryReader reader) {
+  CurrentTopic read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return TopicLocal(
-      id: fields[5] as String?,
-      backgroundColor: fields[3] as Color,
-      textColor: fields[0] as String,
-      buttonColor: fields[1] as Color,
-      buttonTextColor: fields[2] as Color,
+    return CurrentTopic(
+      id: fields[0] as String?,
+      currentTopic: fields[1] as TopicLocal?,
+      listTopic: (fields[2] as List?)?.cast<TopicLocal>(),
+      currentTheme: fields[3] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, TopicLocal obj) {
+  void write(BinaryWriter writer, CurrentTopic obj) {
     writer
-      ..writeByte(5)
-      ..writeByte(5)
-      ..write(obj.id)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.textColor)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.buttonColor)
-      ..writeByte(2)
-      ..write(obj.buttonTextColor)
+      ..write(obj.currentTopic)
       ..writeByte(3)
-      ..write(obj.backgroundColor);
+      ..write(obj.currentTheme)
+      ..writeByte(2)
+      ..write(obj.listTopic);
   }
 
   @override
@@ -47,7 +44,7 @@ class TopicLocalAdapter extends TypeAdapter<TopicLocal> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TopicLocalAdapter &&
+      other is CurrentTopicAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

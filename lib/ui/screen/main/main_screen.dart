@@ -8,6 +8,8 @@ import 'package:mubaha/ui/router/router.gr.dart';
 import 'package:mubaha/ui/screen/calculator/calculator_screen.dart';
 import 'package:mubaha/ui/screen/change_money_screen/change_money_screen.dart';
 import 'package:mubaha/ui/screen/choose_theme/choose_theme_screen.dart';
+import 'package:mubaha/ui/theme/constant.dart';
+import 'package:mubaha/ui/theme/theme.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -72,106 +74,118 @@ class _MainScreenState extends State<MainScreen> {
 
   void _showMaterialDialog() {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Container(
-              // padding: EdgeInsets.symmetric(),
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(
-                  Icons.close,
-                  size: 32,
-                ),
-              ),
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            side: const BorderSide(
+              color: Colors.grey,
+              width: 1.0,
             ),
-            //content: Text('Hey! I am Coflutter!'),
-            actions: <Widget>[
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        margin:
-                            EdgeInsets.only(top: 10.h, left: 12.h, right: 12.h),
-                        padding: EdgeInsets.symmetric(vertical: 15.h),
-                        decoration: BoxDecoration(
-                            color: const Color(0xFFFF8686),
-                            borderRadius: BorderRadius.circular(16)),
-                        child: const Center(
-                          child: Text(
-                            "Đăng nhập",
-                            style: TextStyle(color: Colors.white, fontSize: 17),
-                          ),
-                        ),
-                      ),
+          ),
+          child: Container(
+            height: 280.h,
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  alignment: Alignment.centerRight,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.close_rounded,
+                      size: 32,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        margin:
-                            EdgeInsets.only(top: 16.h, left: 12.h, right: 12.h),
-                        padding: EdgeInsets.symmetric(vertical: 15.h),
-                        decoration: BoxDecoration(
-                            color: const Color(0xFFFF8686),
-                            borderRadius: BorderRadius.circular(16)),
-                        child: const Center(
-                          child: Text(
-                            'Đăng ký',
-                            style: TextStyle(color: Colors.white, fontSize: 17),
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        margin:
-                            EdgeInsets.only(top: 16.h, left: 12.h, right: 12.h),
-                        padding: EdgeInsets.symmetric(vertical: 15.h),
-                        decoration: BoxDecoration(
-                            color: const Color(0xFFFF8686),
-                            borderRadius: BorderRadius.circular(16)),
-                        child: const Center(
-                          child: Text(
-                            'Trợ giúp',
-                            style: TextStyle(color: Colors.white, fontSize: 17),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 24.h,
-              )
-              // TextButton(
-              //     onPressed: () {
-              //       Navigator.pop(context);
-              //     },
-              //     child: Text('Close')),
-              // TextButton(
-              //   onPressed: () {
-              //     print('HelloWorld!');
-              //     Navigator.pop(context);
-              //   },
-              //   child: Text('HelloWorld!'),
-              // )
-            ],
-          );
-        });
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              top: 10.h, left: 12.h, right: 12.h),
+                          padding: EdgeInsets.symmetric(vertical: 15.h),
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFFF8686),
+                              borderRadius: BorderRadius.circular(16)),
+                          child: const Center(
+                            child: Text(
+                              "Đăng nhập",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 17),
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              top: 16.h, left: 12.h, right: 12.h),
+                          padding: EdgeInsets.symmetric(vertical: 15.h),
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFFF8686),
+                              borderRadius: BorderRadius.circular(16)),
+                          child: const Center(
+                            child: Text(
+                              'Đăng ký',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 17),
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              top: 16.h, left: 12.h, right: 12.h),
+                          padding: EdgeInsets.symmetric(vertical: 15.h),
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFFF8686),
+                              borderRadius: BorderRadius.circular(16)),
+                          child: const Center(
+                            child: Text(
+                              'Trợ giúp',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 17),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 24.h,
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+    // showDialog(
+    //     context: context,
+    //     builder: (context) {
+    //       return AlertDialog(
+    //         title: ,
+    //         //content: Text('Hey! I am Coflutter!'),
+    //         actions: <Widget>[],
+    //       );
+    //     });
   }
 
   @override
@@ -183,7 +197,13 @@ class _MainScreenState extends State<MainScreen> {
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
           centerTitle: false,
+          elevation: 0,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20))),
         ),
+        //backgroundColor: backgroundColor,
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
@@ -224,7 +244,14 @@ class _MainScreenState extends State<MainScreen> {
                       height: 24,
                       width: 24,
                     ),
-                    title: Text(_title[index]),
+                    title: Text(
+                      _title[index],
+                      style: index != _selectedIndex
+                          ? titleStyle.copyWith(
+                              height: 0, fontSize: 14.sp, color: textColor)
+                          : titleStyle.copyWith(
+                              height: 0, fontSize: 14.sp, color: primaryColor),
+                    ),
                     selected: _selectedIndex == index,
                     onTap: () async {
                       if (index == 3) {

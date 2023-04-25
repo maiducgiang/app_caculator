@@ -17,7 +17,7 @@ void main() async {
   await ThemePreferences.init();
   await EasyLocalization.ensureInitialized();
   final langugage = await AccountServices().getAccountLanguage();
-  CacheManager.instance.init();
+  await CacheManager.instance.init();
   //await dotenv.load(fileName: ".env");
   await SpUtil.getInstance();
   runApp(EasyLocalization(
@@ -26,5 +26,5 @@ void main() async {
       fallbackLocale: const Locale("en"),
       startLocale: langugage == "" ? null : Locale(langugage),
       assetLoader: const CodegenLoader(),
-      child: const MyApp()));
+      child: MyApp()));
 }

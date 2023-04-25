@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mubaha/data/cache_manager.dart';
 import 'package:mubaha/data/firebase/firebase_manager.dart';
+import 'package:mubaha/data/model/topic_local/topic_local.dart';
 import 'package:mubaha/data/model/user_local/user_model_local.dart';
 import 'package:mubaha/ui/router/router.gr.dart';
 import 'package:mubaha/ui/theme/app_path.dart';
@@ -21,7 +22,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   final _remoteConfig = FirebaseRemoteConfig.instance;
   final FirebaseManager _firebaseManager = FirebaseManager();
-  final _cacheManager = CacheManager.instance;
+  final CacheManager _cacheManager = CacheManager.instance;
   Future<void> init() async {
     await _remoteConfig.setConfigSettings(RemoteConfigSettings(
       fetchTimeout: const Duration(seconds: 60),
@@ -37,6 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   initState() {
     //init();
+    initTheme();
     context.router.pushAll([const MainPage()]);
     super.initState();
   }
@@ -46,6 +48,14 @@ class _SplashScreenState extends State<SplashScreen> {
     if (userLocal != null) showSignUp = false;
     await Future.delayed(const Duration(seconds: 1));
     context.router.pushAll([showSignUp ? const SignUp() : const MainPage()]);
+  }
+
+  void initTheme() async {
+    // if (await _cacheManager.getCurrnetTopicCached() == null) {
+    //   // List<TopicLocal> listData = [
+    //   //   TopicLocal(backgroundColor: Color(value), textColor: textColor, buttonColor: buttonColor, buttonTextColor: buttonTextColor)
+    //   // ];
+    // }
   }
 
   @override
