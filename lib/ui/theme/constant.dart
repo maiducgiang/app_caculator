@@ -12,6 +12,14 @@ Color get backgroundColor {
   return ThemePreferences().isDarkMode ? Color(0xff22252d) : Colors.white;
 }
 
+Color get appBarColor {
+  return ThemePreferences().isDarkMode ? Color(0xff22252d) : primaryColor;
+}
+
+Color get textAppBarColor {
+  return ThemePreferences().isDarkMode ? Colors.white : Colors.white;
+}
+
 Color get textColor {
   return ThemePreferences().isDarkMode ? Colors.white : Color(0xff333333);
 }

@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mubaha/data/model/board_local/board_model.dart';
+import 'package:mubaha/data/model/status_click/status_click.dart';
 import 'package:mubaha/data/model/topic_local/current_topic.dart';
 import 'package:mubaha/data/model/topic_local/topic_local.dart';
 import 'package:mubaha/data/model/user_local/user_model_local.dart';
@@ -13,11 +14,13 @@ class CacheManager {
   static const int currentTopic = 5;
   static const int userLocal = 2;
   static const int fileItemHiveType = 3;
+  static const int statusClick = 6;
   static CacheManager get instance => _instance ??= CacheManager._();
   static const String _listBoard = 'listBoardLocal';
   static const String _userLocal = 'userLocal';
   static const String _TopicLocalAdapter = "TopicLocalAdapter";
   static const String _currentTopic = "currentTopic";
+  static const String _statusClick = "_statusClick";
   CacheManager._();
 
   Box get _cacheBox => Hive.box(_cacheBoxName);
@@ -32,6 +35,7 @@ class CacheManager {
       Hive.registerAdapter(UserLocalAdapter());
       Hive.registerAdapter(CurrentTopicAdapter());
       Hive.registerAdapter(TopicLocalAdapter());
+      Hive.registerAdapter(StatusClickAdapter());
       await openBox();
       print('Open box successfully');
     } catch (ex) {
@@ -127,6 +131,15 @@ class CacheManager {
   Future<TopicLocal?> getTopic() async {
     TopicLocal? topic = _cacheBox.get(_TopicLocalAdapter) as TopicLocal?;
     return topic;
+  }
+
+  Future<void> addStatusClickToCached(StatusClick statusClick) async {
+    await _cacheBox.put(_statusClick, statusClick);
+  }
+
+  Future<StatusClick?> getStatusClickCached() async {
+    StatusClick? statusClick = _cacheBox.get(_statusClick) as StatusClick?;
+    return statusClick;
   }
 
   Future<void> clear() async {

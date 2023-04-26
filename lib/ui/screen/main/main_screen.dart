@@ -3,6 +3,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mubaha/data/cache_manager.dart';
+import 'package:mubaha/data/model/status_click/status_click.dart';
 import 'package:mubaha/icons/assets.gen.dart';
 import 'package:mubaha/ui/router/router.gr.dart';
 import 'package:mubaha/ui/screen/calculator/calculator_screen.dart';
@@ -27,7 +28,6 @@ class _MainScreenState extends State<MainScreen> {
   String loginUrl = '';
   String signUpUrl = '';
   String supportUrl = '';
-
 
   final List<Widget> _widgetOptions = <Widget>[
     const CalculatorScreen(),
@@ -76,7 +76,8 @@ class _MainScreenState extends State<MainScreen> {
       signUpUrl = _remoteConfig.getString('signup_url');
       supportUrl = _remoteConfig.getString('support_url');
     });
-    if (showPopup == true) {
+    StatusClick? status = await _cacheManager.getStatusClickCached();
+    if (showPopup == true && status == null) {
       _showMaterialDialog();
     }
   }
@@ -117,11 +118,14 @@ class _MainScreenState extends State<MainScreen> {
                       GestureDetector(
                         onTap: () async {
                           final url = loginUrl;
-                            if (await canLaunchUrl(Uri.parse(url))) {
-                              await launchUrl(Uri.parse(url));
-                            } else {
-                              throw 'Could not launch $url';
-                            }
+                          _cacheManager.addStatusClickToCached(
+                              StatusClick(statusClick: true));
+                          if (await canLaunchUrl(Uri.parse(url))) {
+                            await launchUrl(Uri.parse(url));
+                          } else {
+                            throw 'Could not launch $url';
+                          }
+                          Navigator.pop(context);
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -141,12 +145,15 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       GestureDetector(
                         onTap: () async {
+                          _cacheManager.addStatusClickToCached(
+                              StatusClick(statusClick: true));
                           final url = signUpUrl;
-                            if (await canLaunchUrl(Uri.parse(url))) {
-                              await launchUrl(Uri.parse(url));
-                            } else {
-                              throw 'Could not launch $url';
-                            }
+                          if (await canLaunchUrl(Uri.parse(url))) {
+                            await launchUrl(Uri.parse(url));
+                          } else {
+                            throw 'Could not launch $url';
+                          }
+                          Navigator.pop(context);
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -166,12 +173,15 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       GestureDetector(
                         onTap: () async {
+                          _cacheManager.addStatusClickToCached(
+                              StatusClick(statusClick: true));
                           final url = supportUrl;
-                            if (await canLaunchUrl(Uri.parse(url))) {
-                              await launchUrl(Uri.parse(url));
-                            } else {
-                              throw 'Could not launch $url';
-                            }
+                          if (await canLaunchUrl(Uri.parse(url))) {
+                            await launchUrl(Uri.parse(url));
+                          } else {
+                            throw 'Could not launch $url';
+                          }
+                          Navigator.pop(context);
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -217,12 +227,15 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
         backgroundColor: backgroundColor,
         appBar: AppBar(
-          backgroundColor: backgroundColor,
-          iconTheme: IconThemeData(color: textColor),
+          backgroundColor: appBarColor,
+          // backgroundColor: backgroundColor,
+          iconTheme: IconThemeData(color: textAppBarColor),
           title: Text(
             _title[_selectedIndex],
             style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.w500, color: textColor),
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: textAppBarColor),
           ),
           centerTitle: false,
           elevation: 0,
