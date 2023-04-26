@@ -75,7 +75,7 @@ class _ChooseThemeScreenState extends State<ChooseThemeScreen> {
                     groupValue: this.value,
                     title: Text(
                       value,
-                      style: titleStyle.copyWith(fontSize: 18.sp),
+                      style: titleStyle.copyWith(fontSize: 18.sp, height: 0),
                     ),
                     activeColor: primaryColor,
                     onChanged: (val) => setState(() {
