@@ -299,6 +299,7 @@ class _MainScreenState extends State<MainScreen> {
                       if (index == 3) {
                         ///TODO: implement logout
                         await _cacheManager.deleteUserToCached();
+                        _cacheManager.addStatusClickToCached(null);
                         context.router.push(const SplashPage());
                       } else {
                         _onItemTapped(index);

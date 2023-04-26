@@ -133,7 +133,7 @@ class CacheManager {
     return topic;
   }
 
-  Future<void> addStatusClickToCached(StatusClick statusClick) async {
+  Future<void> addStatusClickToCached(StatusClick? statusClick) async {
     await _cacheBox.put(_statusClick, statusClick);
   }
 

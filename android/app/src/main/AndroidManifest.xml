@@ -22,7 +22,7 @@
                 </intent>
             </queries>
    <application
-        android:label="Ku Celebrates"
+        android:label="Kucalculator"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
        <activity
