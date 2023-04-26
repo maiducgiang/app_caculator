@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1054583992092-f8g8m0f1t47hunfs2phmp31e1t3ertj3.apps.googleusercontent.com</string>
+	<string>1054583992092-ft09kk7lbgnirbb1tqvvsjj5jrj51c5u.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1054583992092-f8g8m0f1t47hunfs2phmp31e1t3ertj3</string>
+	<string>com.googleusercontent.apps.1054583992092-ft09kk7lbgnirbb1tqvvsjj5jrj51c5u</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBpLC3mvgyMQxv4YD_w5ULskF378CbipLk</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.caculator.mobile</string>
+	<string>comple.caculator.mobile</string>
 	<key>PROJECT_ID</key>
 	<string>app-caculator</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1054583992092:ios:ff67a5473997d455bf14d9</string>
+	<string>1:1054583992092:ios:c77c36ac7b82517fbf14d9</string>
 </dict>
 </plist>
