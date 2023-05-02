@@ -165,6 +165,14 @@ class $AssetsImagesIconsGen {
   /// File path: assets/images/icons/heart.svg
   String get heart => 'assets/images/icons/heart.svg';
 
+  /// File path: assets/images/icons/icon_app.jpg
+  AssetGenImage get iconAppJpg =>
+      const AssetGenImage('assets/images/icons/icon_app.jpg');
+
+  /// File path: assets/images/icons/icon_app.png
+  AssetGenImage get iconAppPng =>
+      const AssetGenImage('assets/images/icons/icon_app.png');
+
   /// File path: assets/images/icons/icon_search.svg
   String get iconSearch => 'assets/images/icons/icon_search.svg';
 
@@ -187,7 +195,7 @@ class $AssetsImagesIconsGen {
   String get vector1 => 'assets/images/icons/vector1.svg';
 
   /// List of all assets
-  List<String> get values => [
+  List<dynamic> get values => [
         apple,
         bar,
         bottomnavigatorBoard,
@@ -209,6 +217,8 @@ class $AssetsImagesIconsGen {
         facebook,
         google,
         heart,
+        iconAppJpg,
+        iconAppPng,
         iconSearch,
         like,
         notificationIcon,

@@ -10,19 +10,6 @@ unfocus(BuildContext context) {
   TextEditingController().clear();
 }
 
-addToCart(
-    {required BuildContext context,
-    required int amount,
-    required int variantIndex,
-    required int attributeIndex}) {
-  // context.read<VariantCubit>().selectVariant(
-  //     productId: productDetail.id,
-  //     amount: amount,
-  //     selectedVariant: productDetail.variants![variantIndex].id,
-  //     enableAdd: true,
-  //     variantIndex: attributeIndex);
-}
-
 showPopup(
     {String? title,
     bool? chooseGender,

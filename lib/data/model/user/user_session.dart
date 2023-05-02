@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mubaha/data/model/user/user_model.dart';
 
 part 'user_session.g.dart';
 
@@ -7,8 +6,11 @@ part 'user_session.g.dart';
 class UserSession {
   final String token;
   final String userId;
-  final UserModel? user;
-  UserSession({required this.token, required this.userId, this.user});
+  // final UserModel? user;
+  UserSession({
+    required this.token,
+    required this.userId,
+  });
 
   factory UserSession.fromJson(Map<String, dynamic> json) =>
       _$UserSessionFromJson(json);

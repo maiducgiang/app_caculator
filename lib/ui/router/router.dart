@@ -21,21 +21,12 @@ import '../screen/choose_theme/choose_theme_screen.dart';
         initial: true),
     AutoRoute(page: MainScreen, name: "MainPage", path: AppRoutes.main),
     AutoRoute(page: SignUpScreen, name: "SignUp", path: AppRoutes.signup),
-    AutoRoute(page: CalculatorScreen, name: "Calculator", path: AppRoutes.calculator),
-    AutoRoute(page: ChooseThemeScreen, name: "ChooseTheme", path: AppRoutes.chooseTheme),
+    AutoRoute(
+        page: CalculatorScreen, name: "Calculator", path: AppRoutes.calculator),
+    AutoRoute(
+        page: ChooseThemeScreen,
+        name: "ChooseTheme",
+        path: AppRoutes.chooseTheme),
   ],
 )
 class $AppRouter {}
-
-Widget slideBottomToTop(context, animation, secondaryAnimation, child) {
-  const begin = Offset(0.0, 1.0);
-  const end = Offset.zero;
-  const curve = Curves.fastLinearToSlowEaseIn;
-
-  var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-  return SlideTransition(
-    position: animation.drive(tween),
-    child: child,
-  );
-}

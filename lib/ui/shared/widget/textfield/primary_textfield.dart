@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:mubaha/ui/shared/validators/validators.dart';
+
 import 'package:mubaha/ui/theme/constant.dart';
 import 'package:mubaha/ui/theme/text_style.dart';
 
@@ -33,23 +33,23 @@ class PrimaryTextField extends StatelessWidget {
           return TextFormField(
             style: AppTextStyle().textBody.copyWith(color: titleColor),
             validator: (text) {
-              if (isUsername == true
-                  ? !Validators.isValidUsername(text!)
-                  : isPass == true
-                      ? !Validators.isValidPassword(text!)
-                      : isEmail == true
-                          ? !Validators.isValidEmail(text!)
-                          : !Validators.isValidUsername(text!)) {
-                return isUsername == true
-                    ? 'Vui lòng điền tên tài khoản'
-                    : isPhone == true
-                        ? 'Vui lòng điền số điện thoại'
-                        : isPass == true
-                            ? 'Vui lòng nhập mật khẩu'
-                            : isEmail == true
-                                ? 'Email không đúng'
-                                : 'Vui lòng điền Tên đường, toà nhà, số nhà';
-              }
+              // if (isUsername == true
+              //     ? !Validators.isValidUsername(text!)
+              //     : isPass == true
+              //         ? !Validators.isValidPassword(text!)
+              //         : isEmail == true
+              //             ? !Validators.isValidEmail(text!)
+              //             : !Validators.isValidUsername(text!)) {
+              //   return isUsername == true
+              //       ? 'Vui lòng điền tên tài khoản'
+              //       : isPhone == true
+              //           ? 'Vui lòng điền số điện thoại'
+              //           : isPass == true
+              //               ? 'Vui lòng nhập mật khẩu'
+              //               : isEmail == true
+              //                   ? 'Email không đúng'
+              //                   : 'Vui lòng điền Tên đường, toà nhà, số nhà';
+              // }
               return null;
             },
             controller: controller,
