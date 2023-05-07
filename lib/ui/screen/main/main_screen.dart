@@ -279,7 +279,7 @@ class _MainScreenState extends State<MainScreen> {
                     )),
               ),
               Column(
-                children: List.generate(4, (index) {
+                children: List.generate(showPopup == true ? 4 : 3, (index) {
                   return ListTile(
                     leading: Image.asset(
                       _icon[index],
